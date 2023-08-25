@@ -25,3 +25,30 @@ const images = [
       text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
     },
   ];
+
+
+  const slides = document.getElementsByClassName("slide");
+  const next = document.getElementById("next");
+  const prev = document.getElementById("prev");
+  const positionSlides = document.getElementById("position_slides");
+
+
+//   for (let )
+//   positionSlides.innerHTML = `
+//         <div class="slide active">
+//             <img src="./img/01.webp" alt="">
+//         </div>
+//   `
+  let index = 0;
+
+  next.addEventListener('click', function() {
+    document.querySelector('.slide.active').classList.remove('active');
+    index++;
+    slides[index].classList.add('active');
+  })
+
+  prev.addEventListener('click', function() {
+    document.querySelector('.slide.active').classList.remove('active');
+    index--;
+    slides[index].classList.add('active');
+  })

@@ -26,29 +26,56 @@ const images = [
     },
   ];
 
-
-  const slides = document.getElementsByClassName("slide");
+// console.log(images[0].image);
+  
   const next = document.getElementById("next");
   const prev = document.getElementById("prev");
   const positionSlides = document.getElementById("position_slides");
 
 
-//   for (let )
-//   positionSlides.innerHTML = `
-//         <div class="slide active">
-//             <img src="./img/01.webp" alt="">
-//         </div>
-//   `
+let visibile;
+
+for (let i = 0; i < images.length; i++ ) {
+  console.log(images[i].image);
+  if (i == 0) {
+    visibile = 'active';
+  } else {
+    visibile = '';
+  }
+  positionSlides.innerHTML += `
+      <div class="slide ${visibile}">
+        <img src="./${images[i].image}" alt="">
+      </div>`
+
+
+}
+
+  const slides = document.getElementsByClassName("slide");
+  
   let index = 0;
 
   next.addEventListener('click', function() {
-    document.querySelector('.slide.active').classList.remove('active');
-    index++;
+    
+    // document.querySelector('.slide.active').classList.remove('active');
+    slides[index].classList.remove('active');
+    if (index < (slides.length -1)) {
+      index++;
+    } else {
+      index = 0;
+    }
     slides[index].classList.add('active');
+    console.log(index);
   })
-
+  console.log(slides.length);
   prev.addEventListener('click', function() {
-    document.querySelector('.slide.active').classList.remove('active');
-    index--;
+    // document.querySelector('.slide.active').classList.remove('active');
+    slides[index].classList.remove('active');
+    // index--;
+    if (index == 0) {
+      index = (slides.length - 1);
+    } else {
+      index--;
+    }
     slides[index].classList.add('active');
+    console.log(index);
   })
